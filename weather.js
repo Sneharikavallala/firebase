@@ -1,20 +1,14 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>weather</title>
-    <script src="weather.js"></script>
-    
-</head>
-<body>
-   
-        <input type="text" id="cityName" placeholder="Enter a city name"><br>
-        <input type="text" id="temperature" ><br>
-        <button onclick="fetchWeather()">Click</button>
-
-       <div id="display_data"></div>
-</body>
-</html>
+function fetchWeather(){
+    var city=document.getElementById("temp").value
+    console.log(city)
+    var request=new XMLHttpRequest();
+    var apikey ='9e4e69cdf9d64db420dc6a6c665ea665'
+    var url='https://api.openweathermap.org/data/2.5/weather?q='+city+'&appid=9e4e69cdf9d64db420dc6a6c665ea665'
+    request.open('GET',url,true);
+    request.onload=function(){
+        var result=JSON.parse(this.response)
+        console.log(result)
+    }
+    request.send();
+    console.log("Fetching....");
+}
